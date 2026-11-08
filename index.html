@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Hello Cutie! - Birthday Surprise</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,12 @@
       user-select: none;
     }
 
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      overflow: hidden;
+    }
+
     body {
       min-height: 100vh;
       min-height: 100dvh;
@@ -23,20 +29,17 @@
       align-items: center;
       justify-content: center;
       background-color: #f7dede;
-      /* Authentic Red Gingham / Plaid Border Background */
-      background-image: 
+      background-image:
         repeating-linear-gradient(0deg, rgba(184, 30, 36, 0.45) 0px, rgba(184, 30, 36, 0.45) 20px, transparent 20px, transparent 40px),
         repeating-linear-gradient(90deg, rgba(184, 30, 36, 0.45) 0px, rgba(184, 30, 36, 0.45) 20px, transparent 20px, transparent 40px);
       font-family: 'Fredoka', cursive, sans-serif;
       padding: 16px;
     }
 
-    /* Main Cream Inner Card */
     .outer-card {
-      width: 100%;
-      max-width: 980px;
+      width: min(100%, 980px);
       min-height: 560px;
-      height: 90vh;
+      height: min(90vh, 620px);
       max-height: 620px;
       background-color: #fbf5eb;
       border: 3px solid #b32a2a;
@@ -47,7 +50,6 @@
       display: flex;
     }
 
-    /* Slides & Page Transition */
     .page {
       position: absolute;
       inset: 0;
@@ -62,6 +64,11 @@
       transition: opacity 0.35s ease, transform 0.35s ease;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .page::-webkit-scrollbar {
+      display: none;
     }
 
     .page.active {
@@ -70,7 +77,6 @@
       transform: scale(1);
     }
 
-    /* Red Title Typography */
     h1, h2 {
       color: #a82323;
       text-align: center;
@@ -83,7 +89,6 @@
       margin-bottom: 20px;
     }
 
-    /* Red Pill Action Buttons */
     .btn {
       background-color: #a82323;
       color: #ffffff;
@@ -102,6 +107,7 @@
       transition: transform 0.18s ease, background-color 0.18s ease;
       text-decoration: none;
       z-index: 10;
+      touch-action: manipulation;
     }
 
     .btn:hover {
@@ -113,7 +119,6 @@
       transform: translateY(1px) scale(0.98);
     }
 
-    /* PAGE 1 STYLING */
     .speech-bubble {
       background-color: #a82323;
       color: #fff;
@@ -125,6 +130,7 @@
       max-width: 90%;
       z-index: 5;
     }
+
     .speech-bubble::after {
       content: '';
       position: absolute;
@@ -137,11 +143,13 @@
       display: block;
       width: 0;
     }
+
     .speech-bubble h1 {
       color: #fff;
       font-size: clamp(28px, 6vw, 42px);
       margin-bottom: 2px;
     }
+
     .speech-bubble p {
       font-size: clamp(14px, 3.2vw, 17px);
       font-weight: 500;
@@ -160,12 +168,14 @@
       margin-bottom: 20px;
       z-index: 5;
     }
+
     .gift-box-icon::before {
       content: '🎀';
       position: absolute;
       top: -22px;
       font-size: 36px;
     }
+
     .gift-box-icon .heart {
       font-size: 46px;
       color: #a82323;
@@ -176,9 +186,9 @@
       object-fit: contain;
       pointer-events: none;
       z-index: 2;
+      max-width: 100%;
     }
 
-    /* PAGE 2 & 3 STYLING */
     .options-grid {
       display: flex;
       flex-direction: column;
@@ -188,6 +198,7 @@
       z-index: 10;
       width: 100%;
     }
+
     .options-row {
       display: flex;
       gap: 20px;
@@ -195,7 +206,6 @@
       flex-wrap: wrap;
     }
 
-    /* POLAROID PHOTO FRAMES */
     .polaroid-frame {
       border: 4px solid #a82323;
       border-radius: 12px;
@@ -205,6 +215,7 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.1);
       z-index: 5;
     }
+
     .polaroid-frame img {
       width: clamp(140px, 35vw, 185px);
       height: clamp(185px, 46vw, 245px);
@@ -213,7 +224,6 @@
       display: block;
     }
 
-    /* PAGE 5 FLEX CONTAINER */
     .smile-content {
       display: flex;
       align-items: center;
@@ -222,7 +232,6 @@
       flex-wrap: wrap;
     }
 
-    /* PAGE 6 (Letter Container) */
     .letter-container {
       display: flex;
       align-items: center;
@@ -232,6 +241,7 @@
       max-width: 860px;
       z-index: 5;
     }
+
     .letter-paper {
       background: #f7d8a6;
       border: 1px solid #d4b079;
@@ -247,7 +257,6 @@
       text-align: center;
     }
 
-    /* PAGE 7 (Floral Birthday Frame) */
     .birthday-content {
       display: flex;
       align-items: center;
@@ -256,6 +265,7 @@
       flex-wrap: wrap;
       z-index: 5;
     }
+
     .birthday-frame {
       border: 3px dashed #df6782;
       border-radius: 14px;
@@ -263,6 +273,7 @@
       background: #fff;
       position: relative;
     }
+
     .birthday-frame::before {
       content: '🌸 🌺';
       position: absolute;
@@ -270,6 +281,7 @@
       left: 10px;
       font-size: 18px;
     }
+
     .birthday-frame::after {
       content: '🌸 🌺';
       position: absolute;
@@ -277,6 +289,7 @@
       right: 10px;
       font-size: 18px;
     }
+
     .birthday-frame img {
       width: clamp(140px, 35vw, 195px);
       height: clamp(180px, 45vw, 240px);
@@ -285,82 +298,97 @@
       display: block;
     }
 
-    /* RESPONSIVE MEDIA QUERIES FOR PHONES */
     @media (max-width: 768px) {
       body {
         padding: 10px;
       }
+
       .outer-card {
         height: 94vh;
         max-height: none;
         border-radius: 20px;
       }
+
       .page {
         padding: 20px 14px;
         justify-content: center;
       }
 
-      /* Corner stickers scale down so they do not overlap text */
       .cat-sticker-p1-left {
         width: 105px !important;
         bottom: 8px !important;
         left: 4px !important;
       }
+
       .cat-sticker-p1-right {
         width: 105px !important;
         bottom: 8px !important;
         right: 4px !important;
       }
+
       .cat-sticker-p2-top {
         width: 90px !important;
         top: 10px !important;
         left: 10px !important;
       }
+
       .cat-sticker-p2-bottom {
         width: 95px !important;
         bottom: 10px !important;
         right: 10px !important;
       }
+
       .cat-sticker-p4-left {
         width: 95px !important;
         bottom: 15px !important;
         left: 10px !important;
       }
+
       .cat-sticker-p4-right {
         width: 95px !important;
         bottom: 15px !important;
         right: 10px !important;
       }
 
-      /* Stack letter page cleanly on vertical mobile */
       .letter-container {
         flex-direction: column-reverse;
         gap: 14px;
       }
+
       .letter-container .polaroid-frame img {
         width: 90px !important;
         height: 105px !important;
       }
+
       .letter-paper {
         max-width: 96%;
         padding: 14px 16px;
       }
-      
-      /* Page 5 Pointing Cat + Polaroid */
+
       .smile-content {
         flex-direction: column-reverse;
         gap: 14px;
       }
+
       .smile-content .pointing-cat {
         width: 95px !important;
       }
 
-      /* Page 7 Birthday Stack */
       .birthday-content {
         gap: 16px;
       }
+
       .birthday-cat {
         width: 120px !important;
+      }
+
+      .options-row {
+        width: 100%;
+      }
+
+      .options-row .btn,
+      .options-grid > .btn {
+        width: min(100%, 240px);
       }
     }
   </style>
@@ -369,7 +397,6 @@
 
   <div class="outer-card">
 
-    <!-- PAGE 1: Hello Cutie! -->
     <div class="page active" id="page-1">
       <div class="speech-bubble">
         <h1>Hello Cutie!</h1>
@@ -382,15 +409,13 @@
 
       <button class="btn" onclick="goToPage(2)">Click To Open</button>
 
-      <!-- Corner Cat Stickers -->
-      <img class="cat-sticker cat-sticker-p1-left" style="bottom: 12px; left: 16px; width: 175px;" src="PUBG PC\1.png" alt="Cat with Sunglasses" />
-      <img class="cat-sticker cat-sticker-p1-right" style="bottom: 12px; right: 16px; width: 175px;" src="E:\PUBG PC\1.png" alt="Cat with Tulips" />
+      <img class="cat-sticker cat-sticker-p1-left" style="bottom: 12px; left: 16px; width: 175px;" src="1.png" alt="Cat with Sunglasses" />
+      <img class="cat-sticker cat-sticker-p1-right" style="bottom: 12px; right: 16px; width: 175px;" src="2.png" alt="Cat with Tulips" />
     </div>
 
-    <!-- PAGE 2: Are you ready for a little surprise?? -->
     <div class="page" id="page-2">
-      <img class="cat-sticker cat-sticker-p2-top" style="top: 25px; left: 25px; width: 145px;" src="E:\3.png" alt="Cat with Cap" />
-      <img class="cat-sticker cat-sticker-p2-bottom" style="bottom: 20px; right: 25px; width: 155px;" src="E:\4.png" alt="Blushing Cat" />
+      <img class="cat-sticker cat-sticker-p2-top" style="top: 25px; left: 25px; width: 145px;" src="3.png" alt="Cat with Cap" />
+      <img class="cat-sticker cat-sticker-p2-bottom" style="bottom: 20px; right: 25px; width: 155px;" src="4.png" alt="Blushing Cat" />
 
       <h1 class="title-responsive">Are You Ready For A Little Surprise??</h1>
 
@@ -399,15 +424,14 @@
           <button class="btn" onclick="goToPage(3)">Yes 🧸</button>
           <button class="btn" onclick="goToPage(3)">Of Course 🦄</button>
         </div>
-        <button class="btn" onclick="goToPage(3)">Definetly 🐱</button>
+        <button class="btn" onclick="goToPage(3)">Definitely 🐱</button>
       </div>
     </div>
 
-    <!-- PAGE 3: Do you know how much I love you?? -->
     <div class="page" id="page-3">
       <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
         <span style="font-size: 26px;">🎀</span>
-        <img style="width: 125px; height: 125px; object-fit: contain;" src="E:\5.png" alt="Cat Making Heart" />
+        <img style="width: 125px; height: 125px; object-fit: contain;" src="5.png" alt="Cat Making Heart" />
         <span style="font-size: 26px;">🎀</span>
       </div>
 
@@ -416,60 +440,52 @@
       <div class="options-grid" style="margin-top: 0;">
         <div class="options-row">
           <button class="btn" onclick="goToPage(4)">VERY 🌸</button>
-          <button class="btn" onclick="goToPage(4)">A LOTT ⭐</button>
+          <button class="btn" onclick="goToPage(4)">A LOT ⭐</button>
         </div>
         <button class="btn" onclick="goToPage(4)">INFINITE 🩵</button>
       </div>
     </div>
 
-    <!-- PAGE 4: You know what I love the most? -->
     <div class="page" id="page-4">
-      <img class="cat-sticker cat-sticker-p4-left" style="bottom: 35px; left: 35px; width: 150px;" src="E:\6.png" alt="Cute Cat" />
-      <img class="cat-sticker cat-sticker-p4-right" style="bottom: 35px; right: 35px; width: 150px;" src="E:\7.png" alt="Cheek Cat" />
+      <img class="cat-sticker cat-sticker-p4-left" style="bottom: 35px; left: 35px; width: 150px;" src="6.png" alt="Cute Cat" />
+      <img class="cat-sticker cat-sticker-p4-right" style="bottom: 35px; right: 35px; width: 150px;" src="7.png" alt="Cheek Cat" />
 
       <h1 class="title-responsive" style="margin-bottom: 24px;">YOU KNOW WHAT I LOVE THE MOST?</h1>
       <button class="btn" style="padding: 12px 34px;" onclick="goToPage(5)">Click to know!</button>
     </div>
 
-    <!-- PAGE 5: Your beautiful smile! -->
     <div class="page" id="page-5">
       <h1 class="title-responsive" style="margin-bottom: 16px;">YOUR BEAUTIFUL SMILE !</h1>
 
       <div class="smile-content">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
-          <!-- Cat pointing at her photo -->
-          <img class="pointing-cat" style="width: 140px; height: auto;" src="E:\8.png" alt="Pointing Cat" />
+          <img class="pointing-cat" style="width: 140px; height: auto;" src="8.png" alt="Pointing Cat" />
           <button class="btn" onclick="goToPage(6)">Next</button>
         </div>
 
-        <!-- Polaroid: Adi Pink Dress -->
         <div class="polaroid-frame">
-          <img src="E:\aditi\WhatsApp Image 2026-11-08 at 19.28.14.jpeg" alt="Adi's Smile" />
+          <img src="aditi1(3).jpeg" alt="Adi's Smile" />
         </div>
       </div>
     </div>
 
-    <!-- PAGE 6: How I feel for you! -->
     <div class="page" id="page-6">
       <div class="letter-container">
-        <!-- Photo & Button -->
         <div style="display: flex; flex-direction: column; align-items: center;">
           <h2 style="font-size: clamp(20px, 4vw, 30px); margin-bottom: 8px;">How I feel for you!</h2>
           <div class="polaroid-frame" style="margin-bottom: 10px;">
-            <img src="E:\aditi\WhatsApp Image 2026-11-08 at 19.40.49.jpeg" style="width: 140px; height: 165px;" alt="Adi Photo" />
+            <img src="aditi2(2).jpeg" style="width: 140px; height: 165px;" alt="Adi Photo" />
           </div>
           <button class="btn" onclick="goToPage(7)">click me</button>
         </div>
 
-        <!-- Handwritten-style Letter -->
         <div class="letter-paper">
           <div style="margin-bottom: 4px;">✨ 🌸 ✨</div>
-          Loving you feels like finding a place where my heart can finally rest. You’re not just my partner, you’re my comfort, my safe space, and the person I want to share all the little and big moments of life with. I love the way you make ordinary days feel special just by being with you. I can be completely myself without pretending or hiding anything. I'm not always good with words to express how much you mean to me, but I hope you know that my love for you is in every little thing—the way I look at you, the way I hold you, and smile whenever I see you. I don't need a perfect relationship, I just want us to keep grow together, choosing each other, and creating a thousand beautiful memories along the way. 💕
+          Loving you feels like finding a place where my heart can finally rest. You’re not just my partner, you’re my comfort, my safe space, and the person I want to share all the little and big moments of life with. I love the way you make ordinary days feel special just by being with you. I can be completely myself without pretending or hiding anything. I'm not always good with words to express how much you mean to me, but I hope you know that my love for you is in every little thing—the way I look at you, the way I hold you, and the smile that appears whenever I see you. I don't need a perfect relationship; I just want us to keep growing together, choosing each other, and creating a thousand beautiful memories along the way. 💕
         </div>
       </div>
     </div>
 
-    <!-- PAGE 7: Happy Birthday Adi -->
     <div class="page" id="page-7">
       <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 14px;">
         <span style="font-size: 26px;">💕</span>
@@ -477,14 +493,12 @@
       </div>
 
       <div class="birthday-content">
-        <!-- Floral Polaroid: Adi Green Saree -->
         <div class="birthday-frame">
-          <img src="E:\aditi\WhatsApp Image 2026-11-08 at 19.30.24.jpeg" alt="Happy Birthday Adi" />
+          <img src="aditi3(1).jpeg" alt="Happy Birthday Adi" />
         </div>
 
-        <!-- Cat with Birthday Party Cone Hat & Cake -->
         <div style="position: relative; text-align: center;">
-          <img class="birthday-cat" style="width: 160px; height: auto;" src="E:\9.png" alt="Birthday Cat" />
+          <img class="birthday-cat" style="width: 160px; height: auto;" src="9.png" alt="Birthday Cat" />
         </div>
       </div>
 
@@ -501,7 +515,7 @@
       const targetPage = document.getElementById(`page-${pageNumber}`);
       if (targetPage) {
         targetPage.classList.add('active');
-        targetPage.scrollTop = 0; // Reset scroll position for mobile
+        targetPage.scrollTop = 0;
       }
     }
   </script>
